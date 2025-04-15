@@ -25,7 +25,7 @@ Route::prefix('admin')->middleware('auth', AdminMiddleware::class)->group(functi
     Route::controller(CategoryController::class)->group(function() {
         Route::get('/category', 'index')->name('category');
         Route::post('/category/store', 'store')->name('category.store');
-        Route::put('/category/update/{id}', 'update')->name('category.update');
+        Route::put('/category/update/{id}', 'update')->name('category.update');  //route ini belum dipangiil
     });
 });
 
