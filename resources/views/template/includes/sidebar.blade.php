@@ -30,7 +30,7 @@
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">List Category</a>
+                        <a class="nav-link" href="{{ route('category') }}">List Category</a>
                     </li>
                 </ul>
             </div>
