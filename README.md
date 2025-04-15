@@ -6,10 +6,10 @@ Panduan singkat untuk menjalankan project Laravel dari repository Git, cocok unt
 
 ```bash
 # Clone project dan masuk ke foldernya
-git clone https://github.com/username/nama-project.git \
-cd nama-project \
-composer install \
-cp .env.example .env \
+git clone https://github.com/username/nama-project.git
+cd nama-project
+composer install
+cp .env.example .env
 php artisan key:generate
 ```
 
@@ -26,7 +26,7 @@ DB_PASSWORD=
 ## Migrasi dan Menjalankan Server
 
 ```bash
-php artisan migrate \ 
+php artisan migrate
 php artisan serve
 ```
 
