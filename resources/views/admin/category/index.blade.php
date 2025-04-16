@@ -4,6 +4,12 @@
 
 @section('content')
 
+@if(session('message'))
+<div class="alert alert-warning">
+    {{session('message')}}
+</div>
+@endif
+
 <div class="page-header">
     <h3 class="page-title">Data Kategori Buku Perpustakaan IDN</h3>
 </div>
@@ -33,7 +39,11 @@
                             <td> {{ $category->name }} </td>
                             <td>
                                 <button class="btn btn-rounded btn-gradient-primary" data-bs-toggle="modal" data-bs-target="#updateCategoryModal{{ $category->id }}">Edit</button>
-                                <button class="btn btn-rounded btn-gradient-danger">Delete</button>
+                                <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-rounded btn-gradient-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @empty
@@ -92,8 +102,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('category.store') }}" method="POST">
+                    <form action="{{ route('category.update', $category->id ) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="name">Kategori</label>
                             <input name="name" value="{{ old('name', $category->name) }}" type="text" class="form-control @error('name') is-invalid @enderror"  id="name" placeholder="Masukan Nama Kategori">

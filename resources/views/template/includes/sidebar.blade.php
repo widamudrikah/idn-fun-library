@@ -59,7 +59,7 @@
             <div class="collapse" id="book">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">List Buku</a>
+                        <a class="nav-link" href="{{ route('book') }}">List Buku</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tambah Buku</a>

@@ -46,4 +46,12 @@ class CategoryController extends Controller
          ]);
          return redirect()->route('category')->with('message', 'Berhasil update data kategori');
     }
+
+    public function destroy($id) {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('category')->with('message', 'Data category berhasil dihapus');
+
+    }
 }
