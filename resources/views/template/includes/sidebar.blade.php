@@ -62,7 +62,7 @@
                         <a class="nav-link" href="{{ route('book') }}">List Buku</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tambah Buku</a>
+                        <a class="nav-link" href="{{ route('book.create') }}">Tambah Buku</a>
                     </li>
                 </ul>
             </div>

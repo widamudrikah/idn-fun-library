@@ -33,8 +33,9 @@ Route::prefix('admin')->middleware('auth', AdminMiddleware::class)->group(functi
 
     // CRUD Book
     Route::controller(BookController::class)->group(function() {
-        Route::get('/book', 'index')->name('book');
-        Route::get('/book/create', 'create')->name('book.create');
+        Route::get('/book', 'index')->name('book');  //untuk menampilkan semua data buku
+        Route::get('/book/create', 'create')->name('book.create'); // menampilkan form tambah buku
+        Route::post('/book/store', 'store')->name('book.store'); // menyimpan buku ke database
     });
 });
 
