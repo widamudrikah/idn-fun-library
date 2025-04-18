@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index() {
-        $books = Book::all();
+        $books = Book::paginate(10);
         return view('admin.books.index', compact('books'));
     }
     
@@ -40,6 +40,20 @@ class BookController extends Controller
         ]);
 
         return redirect()->route('book')->with('message', "Berhasil menambahkan data buku");
+    }
+
+    // Detail Buku
+    public function detail($id) {
+        $book = Book::find($id);
+        // return $book->id;
+        return view('admin.books.detail', compact('book'));
+    }
+
+    // Edit
+    public function edit($id) {
+        $book = Book::find($id);
+        $categories = Category::all();
+        return view('admin.books.edit', compact('categories', 'book'));
     }
 
     public function validateBook(Request $request) {

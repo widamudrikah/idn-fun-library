@@ -36,6 +36,8 @@ Route::prefix('admin')->middleware('auth', AdminMiddleware::class)->group(functi
         Route::get('/book', 'index')->name('book');  //untuk menampilkan semua data buku
         Route::get('/book/create', 'create')->name('book.create'); // menampilkan form tambah buku
         Route::post('/book/store', 'store')->name('book.store'); // menyimpan buku ke database
+        Route::get('/book/{id}', 'detail')->name('book.detail'); // detail data
+        Route::get('/book/edit/{id}', 'edit')->name('book.edit'); // edit data
     });
 });
 

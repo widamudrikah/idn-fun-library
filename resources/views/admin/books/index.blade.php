@@ -30,12 +30,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @forelse($books as $book)
                         <tr>
-                            <td> 1 </td>
-                            <td> Herman Beck </td>
-                            <td> tersedia </td>
+                            <td> {{ $book->id }} </td>
+                            <td> {{ $book->title }} </td>
                             <td>
-                                <a href="#" class="btn btn-gradient-success btn-sm">
+                                @if($book->stock > 0)
+                                    <span class="badge bg-success">Tersedia ({{ $book->stock }})</span>
+                                @else
+                                    <span class="badge bg-danger">Tidak Tersedia</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('book.detail', $book->id) }}" class="btn btn-gradient-success btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="#" class="btn btn-gradient-warning btn-sm">
@@ -46,8 +53,17 @@
                                 </a>
                             </td>
                         </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7">Tidak ada data buku</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
+                <!-- pagination -->
+                 <div class="d-flex justify-content-center mt-3">
+                    {{ $books->links('pagination::bootstrap-4') }}
+                 </div>
             </div>
         </div>
     </div>
